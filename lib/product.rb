@@ -26,6 +26,14 @@ class Product
 		self.stock > 0
 	end
 
+	def self.in_stock
+		@@products.select { |product| product.in_stock? }
+	end
+
+	def self.include?(some_product)
+		self.find_by_title(some_product.title).count > 0
+	end
+
 	private
 
 	def add_product(new_product)
