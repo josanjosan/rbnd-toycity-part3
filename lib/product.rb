@@ -1,5 +1,6 @@
 class Product
-	attr_reader :title, :price, :stock
+	attr_reader :title, :price
+	attr_accessor :stock
 
 	@@products = []
 
@@ -10,7 +11,6 @@ class Product
 		@stock = options[:stock]
 		
 		add_product(self)
-
 	end
 
 	def self.all
@@ -49,8 +49,8 @@ class Product
 		if name_taken == false
 			@@products << new_product
 		else
-			puts "DuplicateProductError: the product \"#{self.title}\" already exists." #WORKS
-			#raise DuplicateProductError, "the product \"#{options[:title]}\" already exists." #DOESN'T WORK
+			puts "DuplicateProductError: the product \"#{new_product.title}\" already exists." #WORKS
+			#raise DuplicateProductError, "the product \"#{new_product.title}\" already exists." #DOESN'T WORK
 		end
 
 	end
