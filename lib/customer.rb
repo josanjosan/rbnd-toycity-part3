@@ -5,12 +5,8 @@ class Customer
 	@@customer_counter = 0
 
 	def initialize(options = {})
-	
 		@name = options[:name]
-		#@@customer_counter += 1
-		#@@customers << self
 		add_customer(self)
-
 	end
 
 	def self.all
@@ -20,6 +16,10 @@ class Customer
 	def self.find_by_name(some_name)
 		customer_found = @@customers.select { |customer| customer.name == some_name }
 		return customer_found[0]
+	end
+
+	def purchase(product)
+		Transaction.new(self, product)
 	end
 
 	private
@@ -32,9 +32,10 @@ class Customer
 			@@customer_counter += 1
 			@@customers << new_customer
 		else
-			puts "DuplicateCustomerError: the customer \"#{new_customer.name}\" already exists." #WORKS
-			#raise DuplicateCustomerError, "the customer \"#{new_customer.name}\" already exists." #DOESN'T WORK
+			puts "DuplicateCustomerError: customer \"#{new_customer.name}\" already exists." #WORKS
+			#raise DuplicateCustomerError, "customer \"#{new_customer.name}\" already exists." #DOESN'T WORK
 		end
+	
 	end
 
 end

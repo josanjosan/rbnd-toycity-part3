@@ -30,14 +30,9 @@ class Product
 		@@products.select { |product| product.in_stock? }
 	end
 
-	def self.include?(some_product)
-		self.find_by_title(some_product.title).count > 0
-	end
-
 	private
 
 	def add_product(new_product)
-		
 		name_taken = false
 		
 		@@products.each do |product|
@@ -49,8 +44,8 @@ class Product
 		if name_taken == false
 			@@products << new_product
 		else
-			puts "DuplicateProductError: the product \"#{new_product.title}\" already exists." #WORKS
-			#raise DuplicateProductError, "the product \"#{new_product.title}\" already exists." #DOESN'T WORK
+			puts "DuplicateProductError: product \"#{new_product.title}\" already exists." #WORKS
+			#raise DuplicateProductError, "product \"#{new_product.title}\" already exists." #DOESN'T WORK
 		end
 
 	end
