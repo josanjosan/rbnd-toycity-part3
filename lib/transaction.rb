@@ -8,6 +8,8 @@ class Transaction
 		@id = @@ids + 1
 		@customer = customer
 		@product = product
+		#require "date"
+		#@date = Date.today
 		
 		make_transaction(customer, product)
 	end

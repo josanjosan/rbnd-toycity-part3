@@ -63,3 +63,16 @@ puts transaction2.product == nanoblock # Should return true
 
 walter.purchase(firehouse)
 #Should return OutOfStockError: 'LEGO Firehouse Headquarter' is out of stock.
+
+walter.return_item(nanoblock, 5) #Should return TransactionNotFoundError: the transaction id provided cannot be found in the transactions record. 
+puts nanoblock.stock #Should still return 11
+
+julia = Customer.find_by_name("Julia Van Cleve")
+julia.return_item(nanoblock, 1)
+puts nanoblock.stock #Should still return 11
+
+walter.return_item(firehouse, 1) #Should return InvalidTransactionIdError: the product "LEGO Firehouse Headquarter" does not correspond to a purchase made in transaction 1.
+puts nanoblock.stock #Should still return 11
+
+walter.return_item(nanoblock, 2) 
+puts nanoblock.stock #All return checks are met so this time nanoblock stock should have had to go up by one and this line should return 11
