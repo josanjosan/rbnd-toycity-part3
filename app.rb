@@ -64,15 +64,26 @@ puts transaction2.product == nanoblock # Should return true
 walter.purchase(firehouse)
 #Should return OutOfStockError: 'LEGO Firehouse Headquarter' is out of stock.
 
+### NEW FEATURES ###
+
+# ITEM RETURN
 walter.return_item(nanoblock, 5) #Should return TransactionNotFoundError: the transaction id provided cannot be found in the transactions record. 
-puts nanoblock.stock #Should still return 11
+puts nanoblock.stock #Should still return 10
 
 julia = Customer.find_by_name("Julia Van Cleve")
 julia.return_item(nanoblock, 1)
-puts nanoblock.stock #Should still return 11
+puts nanoblock.stock #Should still return 10
 
 walter.return_item(firehouse, 1) #Should return InvalidTransactionIdError: the product "LEGO Firehouse Headquarter" does not correspond to a purchase made in transaction 1.
-puts nanoblock.stock #Should still return 11
+puts nanoblock.stock #Should still return 10
 
 walter.return_item(nanoblock, 2) 
 puts nanoblock.stock #All return checks are met so this time nanoblock stock should have had to go up by one and this line should return 11
+
+# ADVANCED TRANSACTION FINDER
+
+ironman = Product.find_by_title("LEGO Iron Man vs. Ultron")
+julia.purchase(ironman)
+julia.purchase(nanoblock)
+puts Transaction.advanced_find("Julia Van Cleve") # When only customer name is given, should return array with 2 transactions made by this customer
+puts Transaction.advanced_find("Julia Van Cleve", "LEGO Iron Man vs. Ultron") # Now that

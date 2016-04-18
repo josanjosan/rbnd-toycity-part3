@@ -33,13 +33,13 @@ class Customer
 			product_check = (transaction_found.product.title == product.title)
 		end
 		
-		if transaction_check == true
+		if transaction_check
 			puts "TransactionNotFoundError: the transaction id provided cannot be found in the transactions record."
 			#raise TransactionNotFoundError, "the transaction id provided cannot be found in the transactions record."
-		elsif customer_check == false
+		elsif not customer_check
 			puts "InvalidTransactionIdError: the transaction id provided does not correspond to a transaction made by #{self.name}."
 			#raise InvalidTransactionIdError, "the transaction id provided does not correspond to a transaction made by #{self.name}."
-		elsif product_check == false
+		elsif not product_check
 			puts "InvalidTransactionIdError: the product \"#{product.title}\" does not correspond to a purchase made in transaction #{transaction_id}."
 			#InvalidTransactionIdError, "the product \"#{product.title}\" does not correspond to a purchase made in transaction #{transaction_id}."
 		else

@@ -23,6 +23,21 @@ class Transaction
 		@@transactions
 	end
 
+	def self.advanced_find(customer_name, product_title = nil)
+		transactions_found = @@transactions.select { |transaction| transaction.customer.name == customer_name }
+
+		if product_title != nil
+			transactions_found = transactions_found.select { |transaction| transaction.product.title == product_title }
+		end
+		
+		if transactions_found.count > 1
+			return transactions_found
+		else
+			return transactions_found[0]
+		end
+
+	end
+
 	private
 
 	def make_transaction(customer, product)
