@@ -1,0 +1,38 @@
+1. It took me 12 days to finish this project, but I actually spent 6 sessions of an average 2 actual productive hours (I migh have been more time sitting in front of the screen ecach session). Not bad bad considering I have full time job which involves basic "programming" (excel macros and sql), which makes get home not wanting to stare at any backlit screen, let alone solving moderately complex logic problems. This rainy weekend helped too.
+
+2. Feeling I already have an object/desing oriented view of solving problems and always trying to stay ahead of edge cases, which I thought of before ruuning basic code. This was more evident in the additional features requirement, where I first thought of changing the transaction class to allow a return. To save time and continue with the course I adopted another aproached, but still thought of vaious scenarios, so the return method raises three kind of different errors.
+
+3. I could not think of any different to the suggested this time:
+	- Return a product: return_item (Customer instance method) lets a customer returns a product that has a valid transaction, checking for customer/product/transaction correspondense before bringing the stock up. I choose this feature because I thought this is part of the basic operation of an inventory/sales system, so it was necesary. Also, it represented a challenge because it has more edge cases than the other requirements.
+	- Advanced transaction search: advanced_find gets customer name and product title, the last one being optional. I choosed this one, because customers should have a way to find their their transactions based on information they better manage, like their names and products they purchased, an sometimes bills (most probable ID in real life) get lost.
+
+4. I still don't grasp how private methods can be a better choice than public ones, specially when you have different classes that have to call methods from other classes that modify the value of instance variables.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
