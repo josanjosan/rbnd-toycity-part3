@@ -44,8 +44,8 @@ class Product
 		if name_taken == false
 			@@products << new_product
 		else
-			puts "DuplicateProductError: product \"#{new_product.title}\" already exists." #WORKS
-			#raise DuplicateProductError, "product \"#{new_product.title}\" already exists." #DOESN'T WORK
+			#puts "DuplicateProductError: product \"#{new_product.title}\" already exists." #WORKS
+			raise DuplicateProductError, "product \"#{new_product.title}\" already exists." #DOESN'T WORK
 		end
 
 	end

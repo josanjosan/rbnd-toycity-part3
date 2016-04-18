@@ -47,8 +47,8 @@ class Transaction
 			@@transactions << self
 			product.stock -= 1
 		else
-			puts "OutOfStockError: product \"#{product.title}\" is out of stock." #WORKS
-			#raise OutOfStockError, "product \"#{product.title}\" is out of stock." #DOESN'T WORK
+			#puts "OutOfStockError: product \"#{product.title}\" is out of stock." #WORKS
+			raise OutOfStockError, "product \"#{product.title}\" is out of stock." #DOESN'T WORK
 		end
 	end
 

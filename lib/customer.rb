@@ -34,14 +34,14 @@ class Customer
 		end
 		
 		if transaction_check
-			puts "TransactionNotFoundError: the transaction id provided cannot be found in the transactions record."
-			#raise TransactionNotFoundError, "the transaction id provided cannot be found in the transactions record."
+			#puts "TransactionNotFoundError: the transaction id provided cannot be found in the transactions record."
+			raise TransactionNotFoundError, "the transaction id provided cannot be found in the transactions record."
 		elsif not customer_check
-			puts "InvalidTransactionIdError: the transaction id provided does not correspond to a transaction made by #{self.name}."
-			#raise InvalidTransactionIdError, "the transaction id provided does not correspond to a transaction made by #{self.name}."
+			#puts "InvalidTransactionIdError: the transaction id provided does not correspond to a transaction made by #{self.name}."
+			raise InvalidTransactionIdError, "the transaction id provided does not correspond to a transaction made by #{self.name}."
 		elsif not product_check
-			puts "InvalidTransactionIdError: the product \"#{product.title}\" does not correspond to a purchase made in transaction #{transaction_id}."
-			#InvalidTransactionIdError, "the product \"#{product.title}\" does not correspond to a purchase made in transaction #{transaction_id}."
+			#puts "InvalidTransactionIdError: the product \"#{product.title}\" does not correspond to a purchase made in transaction #{transaction_id}."
+			InvalidTransactionIdError, "the product \"#{product.title}\" does not correspond to a purchase made in transaction #{transaction_id}."
 		else
 			product.stock += 1
 		end
@@ -58,8 +58,8 @@ class Customer
 			@@customer_counter += 1
 			@@customers << new_customer
 		else
-			puts "DuplicateCustomerError: customer \"#{new_customer.name}\" already exists." #WORKS
-			#raise DuplicateCustomerError, "customer \"#{new_customer.name}\" already exists." #DOESN'T WORK
+			#puts "DuplicateCustomerError: customer \"#{new_customer.name}\" already exists." #WORKS
+			raise DuplicateCustomerError, "customer \"#{new_customer.name}\" already exists." #DOESN'T WORK
 		end
 	
 	end
